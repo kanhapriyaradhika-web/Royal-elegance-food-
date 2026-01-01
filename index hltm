@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pure Veg Food</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #fff7e6, #eafff0);
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 60px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    z-index: 1000;
+}
+
+nav h2 {
+    color: #2e7d32;
+}
+
+nav button {
+    padding: 10px 25px;
+    border-radius: 30px;
+    border: none;
+    background: #ff9800;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+nav button:hover { transform: scale(1.05); }
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 120px 80px 40px;
+}
+
+.hero-text {
+    width: 50%;
+    animation: fadeUp 1s ease;
+}
+
+.hero-text h1 {
+    font-size: 60px;
+    color: #2e7d32;
+}
+
+.hero-text p {
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+.hero-text button {
+    margin-right: 15px;
+    padding: 14px 30px;
+    border-radius: 30px;
+    border: none;
+    background: #ff9800;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero-text button:hover {
+    transform: scale(1.05);
+}
+
+/* FOOD CIRCLE */
+.food-circle {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    transition: all 1s ease;
+}
+
+/* MENU */
+.menu {
+    padding: 80px;
+    background: #fff;
+}
+
+.menu h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #2e7d32;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card div {
+    padding: 15px;
+}
+
+.card h3 {
+    color: #2e7d32;
+}
+
+/* FOOTER */
+footer {
+    background: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+    from {opacity: 0; transform: translateY(40px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>Veggie Delight</h2>
+    <button>Order Now</button>
+</nav>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Pure Veg. Pure Taste.</h1>
+        <p>Fresh • Healthy • Homemade Style</p>
+        <button>Explore Menu</button>
+        <button>Order Now</button>
+    </div>
+
+    <div class="food-circle" id="foodCircle"></div>
+</section>
+
+<section class="menu">
+    <h2>Our Popular Dishes</h2>
+    <div class="menu-grid">
+        <div class="card">
+            <img src="https://i.imgur.com/N9Koe2C.jpg">
+            <div>
+                <h3>Paneer Butter Masala</h3>
+                <p>Rich & Creamy Delight</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://i.imgur.com/qQ9K7qI.jpg">
+            <div>
+                <h3>Masala Dosa</h3>
+                <p>South Indian Special</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://i.imgur.com/8ZQZ5VZ.jpg">
+            <div>
+                <h3>Veg Thali</h3>
+                <p>Complete Indian Meal</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Pure Veg Food | All Rights Reserved
+</footer>
+
+<script>
+const foods = [
+  "https://i.imgur.com/N9Koe2C.jpg",
+  "https://i.imgur.com/qQ9K7qI.jpg",
+  "https://i.imgur.com/8ZQZ5VZ.jpg",
+  "https://i.imgur.com/FW3W2kT.jpg"
+];
+
+let index = 0;
+const circle = document.getElementById("foodCircle");
+
+function changeFood() {
+    circle.style.opacity = "0";
+    setTimeout(() => {
+        circle.style.backgroundImage = `url(${foods[index]})`;
+        circle.style.opacity = "1";
+        index = (index + 1) % foods.length;
+    }, 500);
+}
+
+setInterval(changeFood, 3000);
+changeFood();
+</script>
+
+</body>
+</html>
